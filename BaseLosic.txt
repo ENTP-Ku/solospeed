@@ -178,7 +178,9 @@ url에 표시된 username의 값이 chats테이블의 receiver칼럼에 저장�
 입력된 메시지값이 chats테이블의 message칼럼에 저장된다.
 
 Chatlist.js
-chats테이블에서 sender칼럼값 또는 receiver칼럼값이 jwt토큰에서 추출한 username과 일치하는 레코드를 save_time 칼럼 내림차순으로 정렬해서 chats테이블의 
+chats테이블에서 sender칼럼값 또는 receiver칼럼값이 jwt토큰에서 추출한 username과 일치하는 레코드를 전부 가져오고 chats테이블의 save_time칼럼 오름차순으로 정렬한 뒤 jwt토큰에서 추출한 username과 일치하는 sender칼럼값과 receiver칼럼값을 null로 만들어버리고 sender칼럽값과 receiver 칼럼값을 하이퍼화하고 chats테이블의 save_time칼럼과 함께 출력.
+하이퍼 텍스트를 클릭하면 그 텍스트 내용을 username=을 접두사로 url에 표시하며 Chat.js로 이동
+
 
 
 
