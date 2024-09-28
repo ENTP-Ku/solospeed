@@ -4,15 +4,17 @@ Home.js
 중고거래게시판버튼이 있다. 그러나 로컬 스트로지에 jwt토큰이 없다면 중고거래게시판 버튼은 출력되지 않는다.
 로그아웃 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 로그아웃버튼은 출력되지 않는다.
 자유게시판 버튼이 있다.
-1대1문의 버튼이 있다.
+1대1문의 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 1대1문의 버튼은 출력되지 않는다.
+채팅목록 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 채팅목록 버튼은 출력되지 않는다.
 로그인버튼을 클릭하면 Login.js로 이동
 회원가입버튼을 클릭하면 Register.js로 이동
 중고거래게시판버튼을 클릭하면 Shop.js로 이동
 로그아웃버튼을 클릭하면 로컬스트로지의 jwt토큰을 삭제한다
 자유게시판 버튼을 클릭하면 Post.js로 이동
 1대1문의 버튼을 클릭하면 jwt 토큰에서 사용자이름을 추출해서 그 값이 master인지 확인후
-master라면 Chatlist.js로 이동
-master가 아니라면 url에 'master' 문자열을 저장한채로 Chat.js로 이동
+master라면 새 윈도우 화면으로 Chatlist.js로 이동
+master가 아니라면 새 윈도우 화면으로 url에 master을 username=을 접두사로 표시하고 Chat.js로 이동
+채팅목록 버튼을 클릭하면 새 윈도우 화면으로 Chatlist.js로 이동
 
 Login.js
 아이디 입력칸이 있다.
@@ -101,7 +103,10 @@ products테이블의 product_name칼럼값을 출력한다
 products테이블의 category칼럼값을 출력한다.
 products테이블의 price칼럼값을 출력한다.
 products테이블의 product_uploader칼럼값을 출력한다.
-로컬 스트로지에 저장된 jwt토큰이 있다면 상품수량 선택폼, 장바구니에 담기 버튼, 주문하기 버튼, 판매자와 채팅하기 버튼 출력.
+상품수량 선택폼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 상품수량 선택폼은 출력되지 않는다.
+장바구니에 담기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 장바구니에 담기 버튼은 출력되지 않는다.
+주문하기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 주문하기버튼은 출력되지 않는다.
+판매자와 채팅하기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 판매자와 채팅하기 버튼은 출력되지 않는다.
 홈버튼을 클릭하면 Home.js로 이동
 목록으로버튼을 클릭하면 Shop.js로 이동
 장바구니에 담기 버튼을 클릭하면 cart테이블에 하나의 레코드로 저장한다.
@@ -111,23 +116,7 @@ products테이블의 price칼럼값을 cart 테이블의 price_in_cart 칼럼에
 jwt토큰에서 username을 추출한 값을 cart 테이블의 username_in_cart 칼럼에 저장한다.
 '장바구니에 저장되었습니다.' alert출력
 주문하기 버튼을 클릭하면 Order.js로 이동
-채팅하기 버튼을 클릭하면 products테이블의 product_uploader칼럼값을 url에 표시하며 Chat.js로 이동
-
-
-Post.js
-홈 버튼이 있다.
-목록 버튼이 있다
-글쓰기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 글쓰기버튼은 출력되지 않는다.
-로그아웃 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 로그아웃버튼은 출력되지 않는다.
-posts 테이블의 레코드들이 save_time칼럼 내림차순으로 출력된다.
-posts테이블의 title칼럼값을 출력한다.
-posts테이블의 content칼럼값을 출력하며 텍스트를 하이퍼화 하고 클릭하면 url에 ID값을 표시하며 PostDetail.js로 이동.
-posts테이블의 username칼럼값을 출력한다.
-posts테이블의 save_time칼럼값을 출력한다.
-홈버튼을 클릭하면 Home.js로 이동.
-목록 버튼을 클릭하면 Post.js로 이동.
-로그아웃 버튼을 클릭하면 로컬 스트로지에 저장된 jwt토큰을 제거하고 Home.js로 이동.
-
+채팅하기 버튼을 클릭하면 products테이블의 product_uploader칼럼값을 username=을 접두사로 url에 표시하며 Chat.js로 이동
 
 Write.js
 홈 버튼이 있다.
@@ -148,6 +137,48 @@ Write.js
 jwt토큰에서 username을 추출해서 posts테이블의 username칼럼에 저장.
 로컬 날짜와 시간을 posts테이블의 save_time칼럼에 저장.
 Post.js로 이동
+
+Post.js
+홈 버튼이 있다.
+목록 버튼이 있다
+글쓰기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 글쓰기버튼은 출력되지 않는다.
+로그아웃 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 로그아웃버튼은 출력되지 않는다.
+posts 테이블의 레코드들이 save_time칼럼 내림차순으로 출력된다.
+posts테이블의 title칼럼값을 출력하며 텍스트를 하이퍼화 하고 클릭하면 url에 ID값을 표시하며 PostDetail.js로 이동.
+posts테이블의 username칼럼값을 출력한다.
+posts테이블의 save_time칼럼값을 출력한다.
+홈버튼을 클릭하면 Home.js로 이동.
+목록 버튼을 클릭하면 Post.js로 이동.
+로그아웃 버튼을 클릭하면 로컬 스트로지에 저장된 jwt토큰을 제거하고 Home.js로 이동.
+
+PostDetail.js
+홈 버튼이 있다.
+목록 버튼이 있다
+로그아웃 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 로그아웃버튼은 출력되지 않는다.
+글삭제 버튼이 있다. 그러나 jwt토큰에서 추출한 username값과 url의 ID값에 해당하는 posts테이블의 레코드의 username 값이 일치하지 않는다면 출력되지 않는다.
+posts테이블에서 url의 ID값에 해당하는 레코드의 title칼럼값 출력.
+posts테이블에서 url의 ID값에 해당하는 레코드의 content칼럼값 출력.
+posts테이블에서 url의 ID값에 해당하는 레코드의 username칼럼값 출력.
+posts테이블에서 url의 ID값에 해당하는 레코드의 save_time칼럼값 출력.
+홈버튼을 클릭하면 Home.js로 이동.
+목록 버튼을 클릭하면 Post.js로 이동.
+로그아웃 버튼을 클릭하면 로컬 스트로지에 저장된 jwt토큰을 제거하고 Home.js로 이동.
+글삭제 버튼을 클릭하면 posts테이블에서 url의 ID값에 해당하는 레코드를 삭제하고 Post.js로 이동.
+
+Chat.js
+메시지 입력칸이 있다.
+전송 버튼이 있다.
+jwt토큰에서 추출한 username의 값이 chats테이블의 sender칼럼과 일치하며 url에 표시된 username의 값이 chats테이블의 receiver칼럼과 일치하는 레코드 전체
+그리고
+jwt토큰에서 추출한 username의 값이 chats테이블의 receiver칼럼과 일치하며 url에 표시된 username의 값이 chats테이블의 sender칼럼과 일치하는 레코드 전체
+를 save_time칼럼 오름차순으로 정렬해서 chats테이블의 username칼럼값, message칼럼값, save_time 칼럼값 출력
+전송 버튼을 클릭하면
+jwt토큰에서 추출한 username의 값이 chats테이블의 sender칼럼에 저장된다.
+url에 표시된 username의 값이 chats테이블의 receiver칼럼에 저장된다.
+입력된 메시지값이 chats테이블의 message칼럼에 저장된다.
+
+Chatlist.js
+chats테이블에서 sender칼럼값 또는 receiver칼럼값이 jwt토큰에서 추출한 username과 일치하는 레코드를 save_time 칼럼 내림차순으로 정렬해서 chats테이블의 
 
 
 
