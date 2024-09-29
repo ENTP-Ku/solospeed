@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/items")
@@ -70,6 +71,13 @@ public class ItemController {
         List<Item> items = itemService.getItemsByCategory(category);
         return ResponseEntity.ok(items);
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItemById(@PathVariable Long id) {
+        Optional<Item> item = itemService.findById(id);
+        return item.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 
 
 }

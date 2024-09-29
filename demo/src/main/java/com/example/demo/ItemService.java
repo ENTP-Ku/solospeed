@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ItemService {
@@ -27,5 +28,10 @@ public class ItemService {
     public List<Item> getItemsByCategory(String category) {
         return itemRepository.findByCategory(category);
     }
+    
+    public Optional<Item> findById(Long id) {
+        return itemRepository.findById(id);
+    }
+
 
 }
