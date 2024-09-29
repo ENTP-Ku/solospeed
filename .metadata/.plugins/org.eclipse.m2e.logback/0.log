@@ -649,3 +649,12 @@
 2024-09-30 05:09:47,161 [Worker-404: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-09-30 05:09:47,166 [Worker-404: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 4 resources from src\main\resources to target\classes
 2024-09-30 05:09:47,170 [Worker-404: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Solo\demo\src\test\resources
+2024-09-30 06:19:50,255 [Worker-412: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-30 06:19:50,262 [Worker-412: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 4 resources from src\main\resources to target\classes
+2024-09-30 06:19:50,265 [Worker-412: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Solo\demo\src\test\resources
+2024-09-30 06:37:00,240 [Worker-427: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-30 06:37:00,246 [Worker-427: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 4 resources from src\main\resources to target\classes
+2024-09-30 06:37:00,250 [Worker-427: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Solo\demo\src\test\resources
+2024-09-30 06:38:20,415 [Worker-420: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-30 06:38:20,420 [Worker-420: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 4 resources from src\main\resources to target\classes
+2024-09-30 06:38:20,424 [Worker-420: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Solo\demo\src\test\resources
