@@ -34,6 +34,12 @@ public class CartController {
         Cart cart = new Cart();
         cart.setItem(item); // item 설정
         cart.setUsernameInCart(username); // username 설정
+        
+        // item으로부터 값을 가져와 설정
+        cart.setImagesInCart(item.getImages());
+        cart.setProductNameInCart(item.getProductName());
+        cart.setPriceInCart(item.getPrice());
+
 
         cartRepository.save(cart);
 
