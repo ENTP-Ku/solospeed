@@ -23,4 +23,16 @@ public class CartController {
         List<Cart> cartItems = cartService.getCartsByUsername(username);
         return ResponseEntity.ok(cartItems);
     }
+    
+    // 장바구니 아이템 삭제
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<String> deleteCartItem(@PathVariable Long itemId) {
+        try {
+            cartService.deleteCartItem(itemId);
+            return ResponseEntity.ok("아이템이 성공적으로 삭제되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("아이템 삭제에 실패했습니다.");
+        }
+    }
+
 }
