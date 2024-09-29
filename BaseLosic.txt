@@ -67,12 +67,12 @@ Login.js로 이동
 입력된 상품가격이 없다면, '가격을 입력해 주세요'alert출력.
 선택된 첨부파일이 없다면, '사진을 등록해 주세요'alert출력.
 위 조건에 전부 해당되지 않는다면
-입력된 상품이름은 products테이블의 product_name칼럼에 저장한다.
-선택된 카테고리는 products테이블의 category칼럼에 저장한다.
-입력된 상품가격은 products테이블의 price칼럼에 저장한다.
-jwt토큰에서 username을 추출해서 products테이블의 product_uploader칼럼에 저장한다.
-첨부된 사진파일은 C:\Solo\demo\src\main\resources\static\images 에 절대경로로 저장하고 파일 위치를 찾을 수 있도록 products테이블의 images칼럼에 저장한다.
-로컬 날짜와시간을 products테이블의 save_time칼럼에 저장한다.
+입력된 상품이름은 items테이블의 product_name칼럼에 저장한다.
+선택된 카테고리는 items테이블의 category칼럼에 저장한다.
+입력된 상품가격은 items테이블의 price칼럼에 저장한다.
+jwt토큰에서 username을 추출해서 items테이블의 product_uploader칼럼에 저장한다.
+첨부된 사진파일은 C:\Solo\demo\src\main\resources\static\images 에 절대경로로 저장하고 파일 위치를 찾을 수 있도록 items테이블의 images칼럼에 저장한다.
+로컬 날짜와시간을 items테이블의 save_time칼럼에 저장한다.
 Shop.js로 이동
 
 5. Shop.js
@@ -83,26 +83,26 @@ Shop.js로 이동
 휴대기기 버튼이 있다.
 의류 버튼이 있다.
 식품 버튼이 있다.
-products테이블의 레코드들을 불러와서 페이지에 save_time칼럼 내림차순으로 5열로 출력한다
+items테이블의 레코드들을 불러와서 페이지에 save_time칼럼 내림차순으로 5열로 출력한다
 images칼럼의 경로에 있는 이미지, product_name칼럼의 내용, category칼럼의 내용, price칼럼의 내용, product_uploader칼럼의 내용을 한묶음으로 출력한다.
 홈버튼을 클릭하면 Home.js로 이동.
 상품등록 버튼을 클릭하면 Upload.js 로 이동.
 로그아웃 버튼을 클릭하면 로컬 스트로지에 저장된 jwt토큰을 제거하고 Home.js로 이동.
-전체상품 버튼을 클릭하면 products테이블의 모든 레코드를 출력한다.
-휴대기기 버튼을 클릭하면 products테이블의 category 칼럼이 휴대기기인 레코드들을 출력한다.
-의류 버튼을 클릭하면 products테이블의 category 칼럼이 의류인 레코드들을 출력한다.
-식품 버튼을 클릭하면 products테이블의 category 칼럼이 식품인 레코드들을 출력한다.
+전체상품 버튼을 클릭하면 items테이블의 모든 레코드를 출력한다.
+휴대기기 버튼을 클릭하면 items테이블의 category 칼럼이 휴대기기인 레코드들을 출력한다.
+의류 버튼을 클릭하면 items테이블의 category 칼럼이 의류인 레코드들을 출력한다.
+식품 버튼을 클릭하면 items테이블의 category 칼럼이 식품인 레코드들을 출력한다.
 상품목록의 사진을 클릭하면 url에 ID를 표시하며 Detail.js로 이동.
 
 6. Detail.js
 홈버튼이 있다.
 목록으로 버튼이 있다.
-url에 표시된 ID에 해당하는 레코드를 products테이블에서 가져와서 출력한다.
-products테이블의 images칼럼의 경로에서 사진을 가져와서 출력한다.
-products테이블의 product_name칼럼값을 출력한다
-products테이블의 category칼럼값을 출력한다.
-products테이블의 price칼럼값을 출력한다.
-products테이블의 product_uploader칼럼값을 출력한다.
+url에 표시된 ID에 해당하는 레코드를 items테이블에서 가져와서 출력한다.
+items테이블의 images칼럼의 경로에서 사진을 가져와서 출력한다.
+items테이블의 product_name칼럼값을 출력한다
+items테이블의 category칼럼값을 출력한다.
+items테이블의 price칼럼값을 출력한다.
+items테이블의 product_uploader칼럼값을 출력한다.
 상품수량 선택폼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 상품수량 선택폼은 출력되지 않는다.
 장바구니에 담기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 장바구니에 담기 버튼은 출력되지 않는다.
 주문하기 버튼이 있다. 그러나 로컬스트로지에 jwt토큰이 없다면 주문하기버튼은 출력되지 않는다.
@@ -110,13 +110,13 @@ products테이블의 product_uploader칼럼값을 출력한다.
 홈버튼을 클릭하면 Home.js로 이동
 목록으로버튼을 클릭하면 Shop.js로 이동
 장바구니에 담기 버튼을 클릭하면 cart테이블에 하나의 레코드로 저장한다.
-products테이블의 images칼럼값을 cart 테이블의 images_in_cart 칼럼에 저장한다.
-products테이블의 product_name칼럼값을 cart 테이블의 product_name_in_cart 칼럼에 저장한다
-products테이블의 price칼럼값을 cart 테이블의 price_in_cart 칼럼에 저장한다.
+items테이블의 images칼럼값을 cart 테이블의 images_in_cart 칼럼에 저장한다.
+items테이블의 product_name칼럼값을 cart 테이블의 product_name_in_cart 칼럼에 저장한다
+items테이블의 price칼럼값을 cart 테이블의 price_in_cart 칼럼에 저장한다.
 jwt토큰에서 username을 추출한 값을 cart 테이블의 username_in_cart 칼럼에 저장한다.
 '장바구니에 저장되었습니다.' alert출력
 주문하기 버튼을 클릭하면 Order.js로 이동
-채팅하기 버튼을 클릭하면 products테이블의 product_uploader칼럼값을 username=을 접두사로 url에 표시하며 Chat.js로 이동
+채팅하기 버튼을 클릭하면 items테이블의 product_uploader칼럼값을 username=을 접두사로 url에 표시하며 Chat.js로 이동
 
 7. Write.js
 홈 버튼이 있다.
