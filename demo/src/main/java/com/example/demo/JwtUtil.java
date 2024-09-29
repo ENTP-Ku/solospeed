@@ -16,17 +16,17 @@ public class JwtUtil {
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username);
+        claims.put("username", username); // username을 claims에 추가
+        return createToken(claims);
     }
 
-    private String createToken(Map<String, Object> claims, String subject) {
+    private String createToken(Map<String, Object> claims) {
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + validityInMilliseconds))
-                .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact();
+                .setClaims(claims) // claims 설정, sub 사용하지 않음
+                .setIssuedAt(new Date(System.currentTimeMillis())) // 발급일
+                .setExpiration(new Date(System.currentTimeMillis() + validityInMilliseconds)) // 만료일
+                .signWith(SignatureAlgorithm.HS256, secretKey) // 서명 알고리즘 및 비밀 키
+                .compact(); // JWT 생성
     }
 
     public boolean validateToken(String token, String username) {
@@ -35,14 +35,17 @@ public class JwtUtil {
     }
 
     private String extractUsername(String token) {
-        return extractAllClaims(token).getSubject();
+        // "username" claims에서 추출
+        return extractAllClaims(token).get("username", String.class);
     }
 
     private Claims extractAllClaims(String token) {
+        // claims에서 모든 정보 추출
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
     }
 
     private boolean isTokenExpired(String token) {
+        // 토큰 만료 여부 확인
         return extractAllClaims(token).getExpiration().before(new Date());
     }
 }

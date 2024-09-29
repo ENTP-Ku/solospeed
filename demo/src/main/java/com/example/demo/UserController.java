@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +19,9 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JwtUtil jwtUtil; // JwtUtil 클래스 주입
+
     @PostMapping("/login") // 로그인 요청을 처리하는 메서드
     public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
         User user = userService.findByUsername(loginRequest.getUsername());
@@ -35,18 +35,15 @@ public class UserController {
         }
 
         // JWT 생성 로직
-        String jwt = generateJwtToken(user); // JWT 생성
+        String jwt = jwtUtil.generateToken(user.getUsername()); // JwtUtil의 generateToken 메서드 호출
         System.out.println(jwt);
         return ResponseEntity.ok(jwt); // JWT 반환
     }
 
-    private String generateJwtToken(User user) {
-        // JWT 생성
-        return Jwts.builder()
-                .setSubject(user.getUsername()) // 주제는 사용자 이름
-                .setIssuedAt(new Date()) // 발급일
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 만료일 (1일 후)
-                .signWith(SignatureAlgorithm.HS256, "secret_key") // 서명 알고리즘 및 비밀 키
-                .compact(); // JWT 생성
+    @PostMapping("/register") // 사용자 등록 요청 처리
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        userService.registerUser(user);
+        return ResponseEntity.ok("User registered successfully");
     }
+
 }
