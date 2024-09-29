@@ -37,8 +37,20 @@ public class ChatService {
         return formattedMessages; // 변환된 리스트 반환
     }
 
+    
     public void saveMessage(Chat chat) {
         chat.setSaveTime(LocalDateTime.now());
         chatRepository.save(chat);
     }
+    
+    // 모든 메시지 가져오는 메서드 추가
+    public List<Chat> getAllChats() {
+        List<Chat> messages = chatRepository.findAll();
+        // 각 메시지의 save_time을 yyyy년 MM월 dd일 HH:mm 형식으로 변환
+        for (Chat chat : messages) {
+            chat.setFormattedSaveTime(chat.getSaveTime().format(DATE_FORMATTER)); // 포맷팅된 날짜 설정
+        }
+        return messages;
+    }
+
 }

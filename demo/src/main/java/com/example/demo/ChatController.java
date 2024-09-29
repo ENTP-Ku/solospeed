@@ -20,4 +20,13 @@ public class ChatController {
     public void sendMessage(@RequestBody Chat chat) {
         chatService.saveMessage(chat);
     }
+    
+    // 모든 채팅 메시지 가져오기
+    @GetMapping("/all")
+    public List<Chat> getAllChats() {
+        return chatService.getAllChats();
+    }
+
+
+
 }
