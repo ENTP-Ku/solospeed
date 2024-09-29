@@ -1,6 +1,7 @@
 package com.example.demo;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,14 @@ public class CartController {
         Item item = itemRepository.findById(itemId)
                                   .orElseThrow(() -> new RuntimeException("Item not found"));
 
+        // 현재 사용자의 장바구니에서 동일한 상품을 찾음
+        Optional<Cart> existingCartItem = cartRepository.findByItemAndUsernameInCart(item, username);
+        
+        if (existingCartItem.isPresent()) {
+            return ResponseEntity.badRequest().body("이미 장바구니에 해당 상품이 있습니다.");
+        }
+
+        
         // Cart 객체 생성 및 저장
         Cart cart = new Cart();
         cart.setItem(item); // item 설정
