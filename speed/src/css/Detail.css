@@ -1,0 +1,7 @@
+.item-image {
+    width: 100%; /* 가로 폭을 부모 요소에 맞추기 */
+    max-width: 500px; /* 최대 폭을 500px로 설정 */
+    height: auto; /* 비율을 유지하며 높이 자동 조정 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 약간의 그림자 효과 */
+}

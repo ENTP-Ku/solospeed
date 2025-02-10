@@ -1,0 +1,14 @@
+.product-container {
+    display: flex;
+    flex-wrap: wrap; /* 여러 줄로 감싸기 */
+    justify-content: space-between; /* 아이템 간격 조절 */
+  }
+  
+  .product-item {
+    width: calc(25% - 10px); /* 4열로 나누고 간격을 고려하여 너비 조절 */
+    margin-bottom: 20px; /* 아래쪽 여백 추가 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    padding: 10px; /* 내부 여백 추가 */
+    text-align: center; /* 중앙 정렬 */
+  }
+  
